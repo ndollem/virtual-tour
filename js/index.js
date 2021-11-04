@@ -154,21 +154,11 @@
       }
     });
 
-    return {
-      data: data,
-      scene: scene,
-      view: view
-    };
-  });
 
 
+    
 
-
-
-
-
-
-  // Set up control for enabling/disabling device orientation.
+// Set up control for enabling/disabling device orientation.
 
 var enabled = false;
 
@@ -221,6 +211,28 @@ function toggle() {
 }
 
 toggleElement.addEventListener('click', toggle);
+
+
+
+
+
+
+
+    return {
+      data: data,
+      scene: scene,
+      view: view
+    };
+  });
+
+
+
+
+
+
+
+
+  
 
   
 
