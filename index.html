@@ -15,19 +15,26 @@
 
 <div id="pano"></div>
 
+<!--Toogle gyro on mobile-->
+<div id="toggleDeviceOrientation">
+  <img class="enable" src="img/enable.png">
+  <img class="disable" src="img/disable.png">
+</div>
+<!--END Toogle gyro on mobile-->
+
 <div id="sceneList">
   <ul class="scenes">
     
       <a href="javascript:void(0)" class="scene" data-id="0-kamar-utama">
-        <li class="text">kamar utama</li>
+        <li class="text">Main Room</li>
       </a>
     
       <a href="javascript:void(0)" class="scene" data-id="1-kamar-1">
-        <li class="text">kamar 1</li>
+        <li class="text">Room 1</li>
       </a>
 
       <a href="javascript:void(0)" class="scene" data-id="2-kamar-2">
-        <li class="text">kamar 2</li>
+        <li class="text">Room 2</li>
       </a>
     
   </ul>
@@ -156,8 +163,10 @@
 <script src="vendor/bowser.min.js" ></script>
 <script src="vendor/marzipano.js" ></script>
 
-<script src="data.js"></script>
-<script src="index.js"></script>
+<script src="js/DeviceOrientationControlMethod.js"></script>
+<script src="js/data.js"></script>
+<script src="js/index.js"></script>
+
 
 </body>
 </html>

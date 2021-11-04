@@ -2,7 +2,7 @@ var APP_DATA = {
   "scenes": [
     {
       "id": "0-kamar-utama",
-      "name": "kamar utama",
+      "name": "Main Room",
       "levels": [
         {
           "tileSize": 256,
@@ -79,7 +79,7 @@ var APP_DATA = {
     },
     {
       "id": "1-kamar-1",
-      "name": "kamar 1",
+      "name": "Room 1",
       "levels": [
         {
           "tileSize": 256,
@@ -143,7 +143,7 @@ var APP_DATA = {
     },
     {
       "id": "2-kamar-2",
-      "name": "kamar 2",
+      "name": "Room 2",
       "levels": [
         {
           "tileSize": 256,
@@ -179,16 +179,10 @@ var APP_DATA = {
       ],
       "infoHotspots": [
         {
-          "yaw": 2.386103088434493,
-          "pitch": -0.18874479886203233,
+          "yaw": 0.266103088434493,
+          "pitch": -0.1,
           "title": "km2 topleft",
           "text": "tv kamar 2 kiri atas"
-        },
-        {
-          "yaw": 2.6577374508237286,
-          "pitch": -0.01840424734242596,
-          "title": "km2 center",
-          "text": "tv kamar 2 center"
         },
         {
           "yaw": -1.7968915016754636,
@@ -206,12 +200,12 @@ var APP_DATA = {
           "pitch": 0.002,
           "radius": 1635,
           "extraTransforms": "rotateY(-28deg)",
-          "url": '<iframe id="youtube" width="1250" height="750" src="https://www.youtube.com/embed/a4YjKmsXyds?rel=0&amp;controls=0&amp;showinfo=0&amp;" frameborder="0" allowfullscreen></iframe>'
+          "url": '<iframe id="youtube" width="1250" height="750" src="https://www.youtube.com/embed/3YqPKLZF_WU?rel=0&amp;controls=0&amp;showinfo=0&amp;" frameborder="0" allowfullscreen></iframe>'
         }
       ]
     }
   ],
-  "name": "Test project",
+  "name": "Virtual room tour",
   "settings": {
     "mouseViewMode": "drag",
     "autorotateEnabled": false,

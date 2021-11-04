@@ -16,6 +16,7 @@
 'use strict';
 
 (function() {
+
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;
   var screenfull = window.screenfull;
@@ -69,6 +70,12 @@
 
   // Initialize viewer.
   var viewer = new Marzipano.Viewer(panoElement, viewerOpts);
+
+  // Register the custom control method.
+  var deviceOrientationControlMethod = new DeviceOrientationControlMethod();
+  var controls = viewer.controls();
+  controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
+  
 
   // Create scenes.
   var scenes = data.scenes.map(function(data) {
@@ -153,6 +160,67 @@
       view: view
     };
   });
+
+
+
+
+
+
+
+
+  // Set up control for enabling/disabling device orientation.
+
+var enabled = false;
+
+var toggleElement = document.getElementById('toggleDeviceOrientation');
+
+function requestPermissionForIOS() {
+  window.DeviceOrientationEvent.requestPermission()
+    .then(response => {
+      if (response === 'granted') {
+        enableDeviceOrientation()
+      }
+    }).catch((e) => {
+      console.error(e)
+    })
+}
+
+function enableDeviceOrientation() {
+  deviceOrientationControlMethod.getPitch(function (err, pitch) {
+    if (!err) {
+      view.setPitch(pitch);
+    }
+  });
+  controls.enableMethod('deviceOrientation');
+  enabled = true;
+  toggleElement.className = 'enabled';
+}
+
+function enable() {
+  if (window.DeviceOrientationEvent) {
+    if (typeof (window.DeviceOrientationEvent.requestPermission) == 'function') {
+      requestPermissionForIOS()
+    } else {
+      enableDeviceOrientation()
+    }
+  }
+}
+
+function disable() {
+  controls.disableMethod('deviceOrientation');
+  enabled = false;
+  toggleElement.className = '';
+}
+
+function toggle() {
+  if (enabled) {
+    disable();
+  } else {
+    enable();
+  }
+}
+
+toggleElement.addEventListener('click', toggle);
 
   
 

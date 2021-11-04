@@ -830,17 +830,7 @@ body.view-control-buttons .viewControlButton {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
+/*Iframe embed for youtube video -------------------------------------------------------------------------*/
 .iframespot {
   background-color: #444;
   position: relative;
@@ -857,3 +847,34 @@ body.view-control-buttons .viewControlButton {
   font-size: 70px;
   color: #ddd;
 }
+/*END Iframe embed for youtube video ---------------------------------------------------------------------*/
+
+
+/*Toogle button gyro on mobile ---------------------------------------------------------------------------*/
+#toggleDeviceOrientation {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  background-color: rgb(103,115,131);
+  background-color: rgba(103,115,131,0.8);
+}
+
+#toggleDeviceOrientation img {
+  width: 34px;
+  margin: 8px;
+}
+
+#toggleDeviceOrientation .disable {
+  display: none;
+}
+
+#toggleDeviceOrientation.enabled .disable {
+  display: block;
+}
+
+#toggleDeviceOrientation.enabled .enable {
+  display: none;
+}
+/*END Toogle button gyro on mobile -----------------------------------------------------------------------*/
