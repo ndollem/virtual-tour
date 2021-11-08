@@ -55,13 +55,12 @@ var APP_DATA = {
           "title": "table",
           "text": "Text table",
           "type": "expand",
-          "elementID": "expand"
+          "elementID": "expandTable"
         },
         {
           "yaw": 1.8871706517066036,
           "pitch": 0.1959723323788083,
           "title": "Couch",
-          "text": "Lorem ipsum sit dolor amet",
           "type": "textInfo",
           "elementID": "textInfo"
         }
@@ -117,14 +116,13 @@ var APP_DATA = {
         {
           "yaw": -0.064079040639959146,
           "pitch": -0.13161514561572659,
-          "title": "km 1 pic center",
-          "text": "<span style=\"font-size: 16px; background-color: rgba(103, 115, 131, 0.8);\">km 1 pic center</span>"
+          "title": "Ordinary picture",
+          "text": "Nothing special, but if you click on the button below <br /><a style=\"font-size: 16px; color:#fff;display: block; text-align: center; background-color: darkorange; padding: 5px ; width: 50%; margin: 10px auto;\" href=\"https://m.liputan6.com\" target=\"_blank\">CLICK ME</a> you might get something special!"
         },
         {
           "yaw": 0.77892979163147864,
           "pitch": 0.07686978725035317,
-          "title": "km 1 pic bottomright",
-          "text": "<span style=\"font-size: 16px; background-color: rgba(103, 115, 131, 0.8);\">km 1 pic bottomright</span>",
+          "title": "Newsletter form",
           "type": "info",
           "elementID": "info"
 
@@ -181,16 +179,15 @@ var APP_DATA = {
         {
           "yaw": 0.266103088434493,
           "pitch": -0.1,
-          "title": "km2 topleft",
-          "text": "tv kamar 2 kiri atas"
+          "title": "Salvador Dalí",
+          "text": "Dalí was a prolific writer and early filmmaker, and cultivated an eccentric public persona with his flamboyant mustache, pet ocelot, and outlandish behavior and quips."
         },
         {
           "yaw": -1.7968915016754636,
           "pitch": 0.09053580021895868,
-          "title": "km2 bottomright",
-          "text": "tv kamar 2 kanan bawah",
+          "title": "Table hotspot",
           "type": "expand",
-          "elementID": "expand"
+          "elementID": "expandDesk"
         }
       ],
       "embedHotspot": [

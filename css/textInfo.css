@@ -1,4 +1,4 @@
-#textInfo .tooltip-content {
+.textInfo .tooltip-content {
     position: absolute;
     left: -70px;
     bottom: 80px;
@@ -25,22 +25,22 @@
     transition-timing-function: ease, cubic-bezier(.17,.67,.4,1.39);
   }
   
-  #textInfo:hover {
+  .textInfo:hover {
     z-index: 3;
   }
   
-  #textInfo:hover .tooltip-content {
+  .textInfo:hover .tooltip-content {
     opacity: 1;
     pointer-events: all;
     -webkit-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
     transform: translate3d(0,0,0) rotate3d(0,0,0,0);
   }
   
-  #textInfo .hotspot {
+  .textInfo .hotspot {
     cursor: pointer;
   }
   
-  #textInfo .hotspot .out:before {
+  .textInfo .hotspot .out:before {
     speak: none;
     font-size: 48px;
     line-height: 90px;
@@ -52,7 +52,7 @@
     -webkit-font-smoothing: antialiased;
   }
   
-  #textInfo .hotspot .out {
+  .textInfo .hotspot .out {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -62,7 +62,7 @@
     transition: transform ease-out 0.1s, border 0.2s;
   }
   
-  #textInfo .hotspot .in {
+  .textInfo .hotspot .in {
     width: 40px;
     height: 40px;
     position: absolute;
@@ -75,7 +75,7 @@
     transition: transform ease-out 0.1s, background 0.2s;
   }
   
-  #textInfo .hotspot .out:after {
+  .textInfo .hotspot .out:after {
     top: 0;
     left: 0;
     padding: 0;
@@ -97,7 +97,7 @@
     transform: scale(0.9);
   }
   
-  #textInfo .hotspot:hover .out {
+  .textInfo .hotspot:hover .out {
     border: 5px solid rgba(255,255,255,1);
     -webkit-transform: scale(0.9);
     -moz-transform: scale(0.9);
@@ -106,7 +106,7 @@
     color: #fff;
   }
   
-  #textInfo .hotspot:hover .in {
+  .textInfo .hotspot:hover .in {
     background-color: rgba(255,255,255,1);
     -webkit-transform: scale(0.8);
     -moz-transform: scale(0.8);
@@ -114,7 +114,7 @@
     transform: scale(0.8);
   }
   
-  #textInfo .hotspot:hover .out:after {
+  .textInfo .hotspot:hover .out:after {
     -webkit-animation: sonarEffect 1.2s ease-out;
     -moz-animation: sonarEffect 1.2s ease-out;
     animation: sonarEffect 1.2s ease-out;
