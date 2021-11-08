@@ -3,7 +3,8 @@
     <head>
         <title>Test 360 Project</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+        <link rel="shortcut icon" href="https://cdn-liputan6-apps.akamaized.net/assets/klyid/images/material/Favicon-KLY.png">
         <style>
             @-ms-viewport {
                 width: device-width;
@@ -13,71 +14,59 @@
         <link rel="stylesheet" href="css/style-min.css" />
     </head>
     <body class="multiple-scenes view-control-buttons">
-        <div id="pano"></div>
 
+        <div id="pano"></div>
+      
         <div id="sceneList">
             <ul class="scenes">
                 <a href="javascript:void(0)" class="scene" data-id="0-kamar-utama">
                     <li class="text">Main Room</li>
                 </a>
-
                 <a href="javascript:void(0)" class="scene" data-id="1-kamar-1">
                     <li class="text">Room 1</li>
                 </a>
-
                 <a href="javascript:void(0)" class="scene" data-id="2-kamar-2">
                     <li class="text">Room 2</li>
                 </a>
             </ul>
         </div>
-
         <div id="titleBar">
             <h1 class="sceneName"></h1>
         </div>
 
-        
 
         <!--Expand circle-->
         <div id="expandTable" class="expand">
             <h1 class="title">Table</h1>
             <img class="icon" src="img/working-table.png" />
-            <p>
-              A table is an item of furniture with a flat top and one or more legs, used as a surface for working at, eating from or on which to place things.
-              Some common types of table are the dining room table, which is used for seated persons to eat meals; the coffee table, which is a low table used in living rooms to display items or serve refreshments; and the bedside table, which is used to place an alarm clock and a lamp.   
-            </p>
+            <p> A table is an item of furniture with a flat top and one or more legs, used as a surface for working at, eating from or on which to place things. Some common types of table are the dining room table, which is used for seated persons to eat meals; the coffee table, which is a low table used in living rooms to display items or serve refreshments; and the bedside table, which is used to place an alarm clock and a lamp. </p>
         </div>
         <div id="expandDesk" class="expand">
             <h1 class="title">Desk</h1>
             <img class="icon" src="img/working-table.png" />
-            <p>
-                The word "desk" originated from the Modern Latin word desca "table to write on", from the mid 14th century. It is a modification of the Old Italian desco "table", from Latin discus "dish" or "disc". The word desk has been
-                used figuratively since 1797. A desk may also be known as a bureau, counter, davenport, escritoire, lectern, reading stand, rolltop desk, school desk, workspace, or writing desk.
-            </p>
+            <p> The word "desk" originated from the Modern Latin word desca "table to write on", from the mid 14th century. It is a modification of the Old Italian desco "table", from Latin discus "dish" or "disc". The word desk has been used figuratively since 1797. A desk may also be known as a bureau, counter, davenport, escritoire, lectern, reading stand, rolltop desk, school desk, workspace, or writing desk. </p>
         </div>
         <!--END expand circle-->
+
 
         <a href="javascript:void(0)" id="autorotateToggle">
             <img class="icon off" src="img/play.png" />
             <img class="icon on" src="img/pause.png" />
         </a>
-
         <a href="javascript:void(0)" id="fullscreenToggle">
             <img class="icon off" src="img/fullscreen.png" />
             <img class="icon on" src="img/windowed.png" />
         </a>
-
         <a href="javascript:void(0)" id="sceneListToggle">
             <img class="icon off" src="img/expand.png" />
             <img class="icon on" src="img/collapse.png" />
         </a>
-
         <!--Toogle gyro on mobile-->
         <a href="javascript:void(0)" id="toggleDeviceOrientation">
             <img class="enable" src="img/enable.png" />
             <img class="disable" src="img/disable.png" />
         </a>
         <!--END Toogle gyro on mobile-->
-
         <a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
             <img class="icon" src="img/up.png" />
         </a>
@@ -98,78 +87,66 @@
         </a>
 
 
-
         <!-- Embed container -->
         <div id="iframespotutama" class="iframespot">
-          <div class="message">Click to play!</div>
-      </div>
-
-      <div id="iframespot1" class="iframespot">
-          <div class="message">Click to play!</div>
-      </div>
-
-      <div id="iframespot2" class="iframespot">
-          <div class="message">Click to play!</div>
-      </div>
-      <!-- END Embed container -->
-
-      <!--Section slide rotate modal info-->
-      <div id="textInfo" class="textInfo">
-          <div class="hotspot">
-              <div class="out"></div>
-              <div class="in"></div>
-          </div>
-          <div class="tooltip-content">
-              <p>
-                  A couch, also known as a sofa, settee, futton, or chesterfield, is a piece of furniture for seating multiple people. It is commonly found in the form of a bench, with upholstered armrests, and often fitted with springs
-                  and tailored cushions.
-              </p>
-          </div>
-      </div>
-      <!--END Section slide rotate modal info-->
-
-      <!--Sign up hotspot-->
-      <div id="info" class="info">
-          <div class="icon_wrapper">
-              <div class="icon">
-                  <div id="inner_icon" class="inner_icon">
-                      <div class="icon1"></div>
-                      <div class="icon2"></div>
-                  </div>
-              </div>
-          </div>
-          <div class="tip">
-              <p>Click to sign up!</p>
-          </div>
-          <div class="content">
-              <div class="image-wrapper">
-                  <img src="https://cdn-liputan6-apps.akamaized.net/assets/klyid/images/material/logo_kly.png" />
-              </div>
-              <div class="content-form">
-                  <p>Fill the form and we'll give you lot's of spam!</p>
-                  <div>
-                      <input id="email" type="text" placeholder="Email" />
-                  </div>
-                  <p>Just kidding, this doesn't do anything</p>
-              </div>
-              <div class="button_wrapper">
-                  <button class="close">Close</button>
-              </div>
-          </div>
-      </div>
-      <!--Sign up hotspot-->
+            <div class="message">Click to play!</div>
+        </div>
+        <div id="iframespot1" class="iframespot">
+            <div class="message">Click to play!</div>
+        </div>
+        <div id="iframespot2" class="iframespot">
+            <div class="message">Click to play!</div>
+        </div>
+        <!-- END Embed container -->
 
 
+        <!--Section slide rotate modal info-->
+        <div id="textInfo" class="textInfo">
+            <div class="hotspot">
+                <div class="out"></div>
+                <div class="in"></div>
+            </div>
+            <div class="tooltip-content">
+                <p> A couch, also known as a sofa, settee, futton, or chesterfield, is a piece of furniture for seating multiple people. It is commonly found in the form of a bench, with upholstered armrests, and often fitted with springs and tailored cushions. </p>
+            </div>
+        </div>
+        <!--END Section slide rotate modal info-->
 
 
-
-
+        <!--Sign up hotspot-->
+        <div id="info" class="info">
+            <div class="icon_wrapper">
+                <div class="icon">
+                    <div id="inner_icon" class="inner_icon">
+                        <div class="icon1"></div>
+                        <div class="icon2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tip">
+                <p>Click to sign up!</p>
+            </div>
+            <div class="content">
+                <div class="image-wrapper">
+                    <img src="https://cdn-liputan6-apps.akamaized.net/assets/klyid/images/material/logo_kly.png" />
+                </div>
+                <div class="content-form">
+                    <p>Fill the form and we'll give you lot's of spam!</p>
+                    <div>
+                        <input id="email" type="text" placeholder="Email" />
+                    </div>
+                    <p>Just kidding, this doesn't do anything</p>
+                </div>
+                <div class="button_wrapper">
+                    <button class="close">Close</button>
+                </div>
+            </div>
+        </div>
+        <!--Sign up hotspot-->
 
         <script src="vendor/screenfull.min.js"></script>
         <script src="vendor/bowser.min.js"></script>
         <script src="vendor/marzipano.js"></script>
-
-        <script src="js/DeviceOrientationControlMethod.js"></script>
         <script src="js/data.js"></script>
         <script src="js/index.js"></script>
     </body>
