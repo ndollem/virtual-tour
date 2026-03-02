@@ -41,6 +41,9 @@
     .article-deck{font-size:1rem;color:var(--color-muted);margin-bottom:18px;line-height:1.5}
     .article-body p{margin:0 0 1em;font-size:1rem}
     .article-body p:first-of-type::first-letter{float:left;font-family:var(--font-serif);font-size:2.8rem;line-height:1;margin:0 6px 0 0;color:var(--color-accent)}
+    .article-headline-img{margin:0 0 18px;width:100%;border-radius:4px;overflow:hidden}.article-headline-img img{display:block;width:100%;height:auto;vertical-align:middle}.article-headline-img figcaption{margin-top:6px;font-size:.8rem;color:var(--color-muted);line-height:1.4}
+    .article-body figure{margin:20px 0}.article-body figure img{display:block;max-width:100%;height:auto;border-radius:4px}.article-body figure figcaption{margin-top:6px;font-size:.8rem;color:var(--color-muted);line-height:1.4}
+    .article-body .img-large{max-width:100%}.article-body .img-medium{max-width:100%}.article-body .img-small{max-width:320px;margin-left:auto;margin-right:auto}
     .ad-in-article{margin:24px 0;display:flex;justify-content:center;min-height:250px}
     .ad-below-article{margin-top:28px;padding-top:20px;border-top:1px solid var(--color-border);display:flex;justify-content:center;min-height:250px}
     .article-meta.footer-meta{margin-top:20px;font-size:.8rem}
@@ -84,10 +87,20 @@
       <h1>Tech Giants Announce $2B Indonesia Data Center Push</h1>
       <p class="article-deck">Major cloud providers to build new facilities in Jakarta and Batam, boosting digital infrastructure investment.</p>
 
+      <figure class="article-headline-img">
+        <img src="https://picsum.photos/1200/630?random=20" alt="Data center and digital infrastructure" width="1200" height="630" loading="eager">
+        <figcaption>New data center investments planned for Jakarta and Batam. Photo: BukaReview</figcaption>
+      </figure>
+
       <div class="article-body">
         <p>Three global technology firms will invest more than $2 billion in new data centers in Indonesia over the next three years, the investment ministry said on Sunday, as demand for cloud and AI infrastructure grows.</p>
         <p>The projects will be located in Jakarta and Batam, with the first phase expected to go live in 2026. The ministry did not name the companies but industry sources pointed to existing commitments from hyperscalers active in the country.</p>
         <p>"This reinforces Indonesia's position as a key digital hub in Southeast Asia and supports our push for more value-added digital economy growth," Minister Bahlil said in a statement.</p>
+
+        <figure class="img-large">
+          <img src="https://picsum.photos/800/450?random=21" alt="Data center facility and servers" width="800" height="450" loading="lazy">
+          <figcaption>Data center investments to go live from 2026. Source: Ministry</figcaption>
+        </figure>
 
         <!-- BR-Article-Mid-2 -->
         <div class="ad-in-article">
@@ -100,6 +113,17 @@
         </div>
 
         <p>Indonesia has been courting data center investment with tax incentives and streamlined permits. Batam's proximity to Singapore and improved undersea cable links have made it an attractive alternative for redundancy and latency-sensitive workloads.</p>
+
+        <figure class="img-medium">
+          <img src="https://picsum.photos/600/400?random=22" alt="Batam and Singapore connectivity" width="600" height="400" loading="lazy">
+          <figcaption>Batam is being positioned as a data center hub near Singapore.</figcaption>
+        </figure>
+
+        <figure class="img-small">
+          <img src="https://picsum.photos/400/300?random=23" alt="Cloud and digital economy growth" width="400" height="300" loading="lazy">
+          <figcaption>Digital economy demand is driving data center expansion.</figcaption>
+        </figure>
+
         <p>Analysts estimate the country's data center market could double by 2028, driven by e-commerce, fintech, and enterprise digitalisation. The new facilities are also expected to create thousands of construction and operational jobs.</p>
       </div>
 
