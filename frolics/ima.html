@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frolics DOOH Player</title>
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: black; }
+        .video-js { width: 100vw !important; height: 100vh !important; }
+    </style>
+</head>
+<body>
+
+    <video id="frolics-player" class="video-js vjs-default-skin" muted playsinline></video>
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-ima/2.1.0/videojs.ima.min.js"></script>
+
+    <script>
+        // 1. Menangkap Data Dinamis dari URL Garlic Player
+        const params = new URLSearchParams(window.location.search);
+        const screenId = params.get('id') || 'DEFAULT_SCREEN';
+        const lat = params.get('lat') || '0';
+        const lon = params.get('lon') || '0';
+
+        // 2. Inisialisasi Player
+        const player = videojs('frolics-player', {
+            autoplay: true,
+            controls: false,
+            sources: [{
+                src: 'frolics-logo-vertical.mp4', // Video Awal/Filler
+                type: 'video/mp4'
+            }]
+        });
+
+        // 3. Konfigurasi Endpoint (AdX & Partner)
+        // Gabungkan parameter lokasi ke dalam VAST Tag dari GAM
+        //const adXTag = `https://pubads.g.doubleclick.net/gampad/ads?iu=/23313062945/Frolics_DOOH_Slot&description_url=https://frolics.digital&tfcd=0&npa=0&sz=1080x1920&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=${Date.now()}&cust_params=screen_id%3D${screenId}%26lat%3D${lat}%26lon%3D${lon}`;
+        const adXTag = `https://pubads.g.doubleclick.net/gampad/ads?iu=/95250053/KLY/DESKTOP/LIPUTAN6.COM/INSTREAM&description_url=http%3A%2F%2Fexample.com&tfcd=0&npa=0&sz=640x480&min_ad_duration=5000&max_ad_duration=60000&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator==${Date.now()}&cust_params=screen_id%3D${screenId}%26lat%3D${lat}%26lon%3D${lon}`;
+        // 4. Integrasi IMA SDK
+        player.ima({
+            adTagUrl: adXTag,
+            showControlsForJSAds: false,
+            debug: false 
+        });
+
+        // 5. Logika Error Handling & Reporting
+        player.on('adserror', function(event) {
+            console.log('AdX/Programmatic Error atau Kosong. Melanjutkan video cadangan.');
+            // Jika ingin panggil partner SSP lain (Vistar/Hivestack), panggil tag mereka di sini
+        });
+
+        player.on('adended', function() {
+            // Sinyal ke Garlic Hub bahwa slot telah selesai dan kembali ke jadwal normal
+            console.log('Iklan Selesai. Mengirim Proof-of-Play ke CMS.');
+            fetch(`https://api.frolics.digital/v1/pop?id=${screenId}`);
+        });
+    </script>
+</body>
+</html>
