@@ -30,6 +30,15 @@ body {
   overflow: hidden;
 }
 
+.player-wrap:fullscreen,
+.player-wrap:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+
 #content,
 #adContainer,
 #contentElement {

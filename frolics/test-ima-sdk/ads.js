@@ -1,15 +1,22 @@
 const adTagUrl =
   "https://pubads.g.doubleclick.net/gampad/ads?iu=/95250053/VIDIO_ANDROID_INSTREAM&description_url=http%3A%2F%2Fexample.com&tfcd=0&npa=0&ad_type=audio_video&sz=480x640%7C640x480&ciu_szs=fluid&min_ad_duration=5000&max_ad_duration=60000&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=";
 
+const landscapeSources = [
+  "//s0.2mdn.net/4253510/google_ddm_animation_480P.mp4",
+  "//s0.2mdn.net/4253510/google_ddm_animation_480P.webm",
+];
+const portraitSource = "frolics-logo.mp4";
+
 const contentElement = document.getElementById("contentElement");
 const adContainerElement = document.getElementById("adContainer");
 const startButton = document.getElementById("startButton");
+const mainContainerElement = document.getElementById("mainContainer");
 
 let adDisplayContainer;
 let adsLoader;
 let adsManager;
 let adsInitialized = false;
-let contentComplete = false;
+let contentCycle = 0;
 
 const videoEvents = [
   "loadstart",
@@ -35,6 +42,30 @@ function log(...args) {
 
 function logAd(...args) {
   console.log("[IMA]", ...args);
+}
+
+function isPortraitViewport() {
+  return window.innerHeight > window.innerWidth;
+}
+
+function setVideoSources(sources) {
+  contentElement.innerHTML = "";
+  sources.forEach((src) => {
+    const source = document.createElement("source");
+    source.src = src;
+    contentElement.appendChild(source);
+  });
+  contentElement.load();
+}
+
+function applyInitialSourceByViewport() {
+  if (isPortraitViewport()) {
+    setVideoSources([portraitSource]);
+    log("Initial source: portrait video", { source: portraitSource });
+    return;
+  }
+  setVideoSources(landscapeSources);
+  log("Initial source: landscape video", { sources: landscapeSources });
 }
 
 function getPlayerSize() {
@@ -156,7 +187,7 @@ function onAdEvent(event) {
     playContent();
   }
 
-  if (event.type === google.ima.AdEvent.Type.ALL_ADS_COMPLETED && !contentComplete) {
+  if (event.type === google.ima.AdEvent.Type.ALL_ADS_COMPLETED) {
     playContent();
   }
 }
@@ -180,10 +211,13 @@ function playContent() {
 }
 
 function onResize() {
-  if (!adsManager) return;
   const size = getPlayerSize();
-  adsManager.resize(size.width, size.height, google.ima.ViewMode.NORMAL);
-  logAd("Ads resized", size);
+  if (adsManager) {
+    adsManager.resize(size.width, size.height, google.ima.ViewMode.NORMAL);
+    logAd("Ads resized", size);
+  } else {
+    log("Player resized", size);
+  }
 }
 
 function attachVideoLogs() {
@@ -199,16 +233,33 @@ function attachVideoLogs() {
   });
 }
 
+function restartCycleWithFreshAdRequest() {
+  contentCycle += 1;
+  log("Content ended. Starting next playback cycle.", { cycle: contentCycle });
+  if (adsLoader) {
+    adsLoader.contentComplete();
+  }
+
+  if (adsManager) {
+    try {
+      adsManager.destroy();
+    } catch (error) {
+      logAd("adsManager destroy warning", error);
+    }
+    adsManager = null;
+  }
+
+  contentElement.currentTime = 0;
+  requestAds();
+}
+
 function init() {
+  applyInitialSourceByViewport();
   attachVideoLogs();
   initializeIMA();
 
   contentElement.addEventListener("ended", () => {
-    contentComplete = true;
-    if (adsLoader) {
-      logAd("Content completed, notifying adsLoader");
-      adsLoader.contentComplete();
-    }
+    restartCycleWithFreshAdRequest();
   });
 
   startButton.addEventListener("click", () => {
@@ -219,6 +270,8 @@ function init() {
   });
 
   window.addEventListener("resize", onResize);
+  document.addEventListener("fullscreenchange", onResize);
+  document.addEventListener("webkitfullscreenchange", onResize);
 
   // Try autoplay-muted flow first (required by modern browsers).
   initializeAdDisplayContainerFromUserAction();
