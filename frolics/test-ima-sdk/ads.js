@@ -1,6 +1,6 @@
 const adTagBaseParams = {
   iu: "/95250053/VIDIO_ANDROID_INSTREAM",
-  description_url: "http://example.com",
+  description_url: "https://ndollem.github.io/virtual-tour/frolics/test-ima-sdk/index.html",
   tfcd: "0",
   npa: "0",
   ad_type: "audio_video",
@@ -95,11 +95,14 @@ function buildResponsiveAdTagUrl(size) {
     url.searchParams.set(key, value);
   });
 
-  // In-stream inventory only supports these fixed eligible sizes.
-  const requestSize = isPortraitViewport() ? "480x640" : "640x480";
+  // In-stream inventory only supports these two eligible sizes.
+  // Send both, with orientation-appropriate size first for better fill.
+  const requestSize = isPortraitViewport()
+    ? "480x640|640x480"
+    : "640x480|480x640";
   url.searchParams.set("sz", requestSize);
   url.searchParams.set("correlator", `${Date.now()}`);
-
+  console.log("Ad tag URL", url.toString());
   return url.toString();
 }
 
