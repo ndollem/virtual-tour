@@ -1,5 +1,18 @@
-const adTagUrl =
-  "https://pubads.g.doubleclick.net/gampad/ads?iu=/95250053/VIDIO_ANDROID_INSTREAM&description_url=http%3A%2F%2Fexample.com&tfcd=0&npa=0&ad_type=audio_video&sz=480x640%7C640x480&ciu_szs=fluid&min_ad_duration=5000&max_ad_duration=60000&gdfp_req=1&unviewed_position_start=1&output=vast&env=vp&impl=s&correlator=";
+const adTagBaseParams = {
+  iu: "/95250053/VIDIO_ANDROID_INSTREAM",
+  description_url: "http://example.com",
+  tfcd: "0",
+  npa: "0",
+  ad_type: "audio_video",
+  ciu_szs: "fluid",
+  min_ad_duration: "5000",
+  max_ad_duration: "60000",
+  gdfp_req: "1",
+  unviewed_position_start: "1",
+  output: "vast",
+  env: "vp",
+  impl: "s",
+};
 
 const landscapeSources = [
   "//s0.2mdn.net/4253510/google_ddm_animation_480P.mp4",
@@ -76,6 +89,28 @@ function getPlayerSize() {
   };
 }
 
+function buildResponsiveAdTagUrl(size) {
+  const url = new URL("https://pubads.g.doubleclick.net/gampad/ads");
+  Object.entries(adTagBaseParams).forEach(([key, value]) => {
+    url.searchParams.set(key, value);
+  });
+
+  // Keep ad request size aligned with current player viewport.
+  url.searchParams.set("sz", `${size.width}x${size.height}`);
+  url.searchParams.set("correlator", `${Date.now()}`);
+
+  return url.toString();
+}
+
+function applyPlayerAspectRatioByViewport() {
+  const isPortrait = isPortraitViewport();
+  mainContainerElement.style.aspectRatio = isPortrait ? "9 / 16" : "16 / 9";
+  log("Player aspect ratio applied", {
+    viewport: `${window.innerWidth}x${window.innerHeight}`,
+    aspectRatio: mainContainerElement.style.aspectRatio,
+  });
+}
+
 function initializeIMA() {
   adDisplayContainer = new google.ima.AdDisplayContainer(
     adContainerElement,
@@ -100,6 +135,7 @@ function initializeIMA() {
 
 function requestAds() {
   const size = getPlayerSize();
+  const adTagUrl = buildResponsiveAdTagUrl(size);
   const adsRequest = new google.ima.AdsRequest();
   adsRequest.adTagUrl = adTagUrl;
   adsRequest.linearAdSlotWidth = size.width;
@@ -211,6 +247,7 @@ function playContent() {
 }
 
 function onResize() {
+  applyPlayerAspectRatioByViewport();
   const size = getPlayerSize();
   if (adsManager) {
     adsManager.resize(size.width, size.height, google.ima.ViewMode.NORMAL);
@@ -254,6 +291,7 @@ function restartCycleWithFreshAdRequest() {
 }
 
 function init() {
+  applyPlayerAspectRatioByViewport();
   applyInitialSourceByViewport();
   attachVideoLogs();
   initializeIMA();
