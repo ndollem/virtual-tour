@@ -95,8 +95,9 @@ function buildResponsiveAdTagUrl(size) {
     url.searchParams.set(key, value);
   });
 
-  // Keep ad request size aligned with current player viewport.
-  url.searchParams.set("sz", `${size.width}x${size.height}`);
+  // In-stream inventory only supports these fixed eligible sizes.
+  const requestSize = isPortraitViewport() ? "480x640" : "640x480";
+  url.searchParams.set("sz", requestSize);
   url.searchParams.set("correlator", `${Date.now()}`);
 
   return url.toString();
