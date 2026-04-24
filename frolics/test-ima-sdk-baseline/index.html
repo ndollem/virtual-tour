@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMA Baseline Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+  </head>
+  <body>
+    <main class="player-shell">
+      <div class="player-wrap" id="mainContainer">
+        <div id="content">
+          <video id="contentElement" autoplay muted playsinline preload="auto">
+            <source src="//s0.2mdn.net/4253510/google_ddm_animation_480P.mp4" />
+            <source src="//s0.2mdn.net/4253510/google_ddm_animation_480P.webm" />
+          </video>
+        </div>
+        <div id="adContainer"></div>
+      </div>
+      <button id="startButton" type="button">Tap to start playback</button>
+    </main>
+    <script src="ads.js"></script>
+  </body>
+</html>
